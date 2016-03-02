@@ -1,0 +1,36 @@
+<head>
+  <title>AccountsNoRegisterBase</title>
+</head>
+
+<body>
+  <h1>AccountsBase!</h1>
+
+  {{> hello}}
+  {{> loginButtons}}
+  {{> createUser}}
+  <ul>
+  	{{#each users}}
+	  	{{> user}}
+	{{/each}}
+  </ul>
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+<template name="user">
+	<li>
+      {{userEmail}}
+	</li>
+</template>
+<template name="createUser">
+	<form>
+		<input name="email" type="email" placeholder="E-mail" />
+		<input type="password" name="password" placeholder="Password" />
+		<br>
+		<input type="text" name="firstname" placeholder="Firstname" />
+		<input type="text" name="lastname" placeholder="Lastname" />
+		<button type="submit">Create</button>
+	</form>
+</template>
