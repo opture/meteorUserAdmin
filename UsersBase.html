@@ -4,24 +4,21 @@
 
 <body>
   <h1>AccountsBase!</h1>
-
-  {{> hello}}
   {{> loginButtons}}
+   {{#if currentUser}}
   {{> createUser}}
   <ul>
   	{{#each users}}
 	  	{{> user}}
 	{{/each}}
   </ul>
+  {{/if}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+
 <template name="user">
 	<li>
-      {{userEmail}}
+      {{userEmail}} :: <span>{{userManager}}</span>
 	</li>
 </template>
 <template name="createUser">
@@ -31,6 +28,14 @@
 		<br>
 		<input type="text" name="firstname" placeholder="Firstname" />
 		<input type="text" name="lastname" placeholder="Lastname" />
+		<select name="userManager">
+			<option disabled="disabled" selected="selected">Manager</option>
+			{{#each users}}
+				<option value="{{this._id}}">
+					{{this.profile.firstname}} {{this.profile.lastname}}
+				</option>
+			{{/each}}
+		</select>
 		<button type="submit">Create</button>
 	</form>
 </template>
